@@ -6,6 +6,7 @@ import { CatalegComponent } from './cataleg/cataleg.component'
 import { CondicionsComponent } from "./condicions/condicions.component";
 
 const routes: Routes = [
+  // {path: '**', redirectTo: 'cistella'},
   {path: 'cistella', component: CistellaComponent},
   {path: 'signin', component: RegistreANDLoginComponent},
   {path: 'cataleg', component: CatalegComponent},

@@ -1,13 +1,12 @@
 footer {
   background-color: black;
-  position: absolute;
+  /*position: absolute;*/
   bottom: 0;
   width: 98.4%;
   height: 90px;
   color: white;
   margin-top: auto;
   margin-left: 7px;
-
 }
 footer #peupagina {
   text-align: center;
