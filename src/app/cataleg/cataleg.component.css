@@ -5,11 +5,17 @@ body {
   position: relative;
   min-height: 100%;
 }
+.primera_linea {
+  display: block;
+}
+.segona_linea {
+  display: block;
+}
 #play5{
   text-align: left;
   display: inline-block;
-  text-align: center;
-  margin-left: 40px;
+  text-align: right;
+  margin-left: 100px;
 }
 #mandoPlay5{
   text-align: center;
@@ -20,26 +26,23 @@ body {
 #juegoPs5{
   text-align: right;
   display: inline-block;
-  text-align: center;
+  text-align: right;
   margin-left: 100px;
 }
 #play4{
   text-align: right;
-  display: inline-block;
-  text-align: center;
-  margin-left: 100px;
+  text-align: left;
+
 }
 #xboxX{
-  text-align: right;
-  display: inline-block;
   text-align: center;
-  margin-left: 100px;
+  text-align: center;
+
 }
 #nintendoSwitch{
-  text-align: left;
-  display: inline-block;
-  text-align: center;
-  margin-left: 100px;
+  text-align: right;
+  text-align: right;
+
 }
 #mandoPlay4{
   text-align: left;
@@ -48,19 +51,19 @@ body {
   margin-left: 40px;
 }
 #mandoXboxX{
-  text-align: left;
+  text-align: center;
   display: inline-block;
   text-align: center;
   margin-left: 100px;
 }
 #mandoNintendoSwitch{
-  text-align: center;
+  text-align: right;
   display: inline-block;
   text-align: center;
   margin-left: 100px;
 }
 #juegoPs4{
-  text-align: center;
+  text-align: left;
   display: inline-block;
   text-align: center;
   margin-left: 100px;
