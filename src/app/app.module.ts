@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegistreANDLoginComponent } from './registre-andlogin/registre-andlogin.component';
 import { CatalegComponent } from './cataleg/cataleg.component';
 import { CondicionsComponent } from './condicions/condicions.component';
+import { IniciComponent } from './inici/inici.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CondicionsComponent } from './condicions/condicions.component';
     RegistreANDLoginComponent,
     CistellaComponent,
     CatalegComponent,
-    CondicionsComponent
+    CondicionsComponent,
+    IniciComponent
   ],
   imports: [
     BrowserModule,

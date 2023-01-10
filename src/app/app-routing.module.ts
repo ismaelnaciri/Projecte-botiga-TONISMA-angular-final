@@ -4,9 +4,10 @@ import { CistellaComponent } from './cistella/cistella.component'
 import { RegistreANDLoginComponent } from './registre-andlogin/registre-andlogin.component'
 import { CatalegComponent } from './cataleg/cataleg.component'
 import { CondicionsComponent } from "./condicions/condicions.component";
+import { IniciComponent} from "./inici/inici.component";
 
 const routes: Routes = [
-  // {path: '**', redirectTo: 'cistella'},
+  {path: 'inici', component:IniciComponent},
   {path: 'cistella', component: CistellaComponent},
   {path: 'signin', component: RegistreANDLoginComponent},
   {path: 'cataleg', component: CatalegComponent},
