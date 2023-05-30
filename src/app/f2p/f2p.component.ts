@@ -31,6 +31,7 @@ export class F2pComponent implements OnInit{
         next:(data)=>{
           resolve(data)
         }, error:(err)=>{
+
           reject(err)
         }
       })

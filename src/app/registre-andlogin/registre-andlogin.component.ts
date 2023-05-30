@@ -3,8 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {UsersService} from "../users.service";
 
-import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {Interface} from "ethers";
+
 
 
 declare global {
@@ -31,6 +30,9 @@ export class RegistreANDLoginComponent  {
 
   //Login
   [x: string]: any;
+
+  login: any[] =[]
+
   email:any;
   password:any;
   correuTrobat: any;
@@ -42,7 +44,8 @@ export class RegistreANDLoginComponent  {
    /* if(this.autenticat){
       this.nomAutenticat = this.serveiUsuari.arrClients.clients[this.serveiUsuari.posAutenticat].Nom;
     }*/
-    this.http.get<any>("http://localhost:3080/api/login").subscribe()
+    this.http.get<any>("http://localhost:3080/signin").subscribe()
+
   }
 
   registrar(){
@@ -51,8 +54,27 @@ export class RegistreANDLoginComponent  {
       contrasenya:this.contrasenya,
       correu:this.correu
     }]
-    this.http.post("http://localhost:3080/api/login",{json:this.registre}).subscribe();
+    this.http.post("http://localhost:3080/signin",{json:this.registre}).subscribe();
   }
+
+  iniciar() {
+    const formData = {
+      email: this.email,
+      password: this.password
+    };
+
+    this.http.post<any>('http://localhost:3080/login', formData).subscribe(
+      (response) => {
+
+        console.log(response);
+      },
+      (error) => {
+
+        console.error(error);
+      }
+    );
+  }
+
 
   // openMetaMaskWallet() {
   //   //@ts-ignore

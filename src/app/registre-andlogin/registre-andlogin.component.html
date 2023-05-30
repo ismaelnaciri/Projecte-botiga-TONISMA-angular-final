@@ -1,4 +1,4 @@
-<form id="login-form" name="loginForm">
+<form id="login-form" name="loginForm"(submit)="iniciar()">
   <h1>Iniciar sesión</h1>Email
   <div class="email_login">
     <input value="" id="username_login" name="usr"  [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
@@ -12,7 +12,8 @@
 </form>
 
 <form id="sign-in-form" name="signupForm"  (submit)="registrar()" >
-  <h1>Registra't</h1>Nom<div class="nom">
+  <h1>Registra't</h1>
+  Nom<div class="nom">
   <input value="" id="nom" [(ngModel)]="nom" [ngModelOptions]="{standalone: true}">
 </div>
 Email
@@ -23,5 +24,5 @@ Contrasenya
   <div class="contrasenya_signin">
     <input type="password" value="" id="password_signin" [(ngModel)]="contrasenya" [ngModelOptions]="{standalone: true}">
   </div>
-  <button type="submit" id="submitData">Registrar-se</button>
+  <button type="submit" id="submitData" >Registrar-se</button>
 </form>
