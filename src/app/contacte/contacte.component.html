@@ -22,7 +22,7 @@
   <input type="text" name="nom" placeholder="Introduïu el vostre nom" class="controls" [(ngModel)]="this.name">
   <input type="email" name="correu" placeholder="Introduïu el vostre correu electrònic" class="controls" [(ngModel)]="this.mail">
   <textarea class="controls" name="missatge" placeholder="Missatge" [(ngModel)]="this.missatge"></textarea>
-  <input type="submit" name="enviar" value="Enviar missatge" class="btn-enviar">
+  <input type="submit" name="enviar" value="Enviar mensaje" class="btn-enviar" (click)="enviarMensaje()">
   <div class="g-recaptcha" data-sitekey="Clave del sitio"></div>
 </aside>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47454.88300873964!2d2.783647733377539!3d41.98030862868054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12bae72798c8fdab%3A0xaf3845b6a5296a6f!2sGirona!5e0!3m2!1ses!2ses!4v1679561660598!5m2!1ses!2ses" width="1500" height="430" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

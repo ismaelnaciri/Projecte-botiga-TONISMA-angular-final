@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contacte',
@@ -11,8 +11,21 @@ export class ContacteComponent {
   mail: any;
   missatge: any;
 
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient) {}
+
+  enviarMensaje() {
+    const missatge = {
+      name: this.name,
+      mail: this.mail,
+      missatge: this.missatge
+    };
+
+    this.http.post('http://localhost:3080/api/contacte', missatge).subscribe(
+      (response) => {
+        console.log('S\'ha enviat el teu missatge:', response);
+        window.alert("S'ha enviat el teu missatge")
+      }
+    );
   }
-
-
 }
