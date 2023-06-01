@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import * as http from "http";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -15,8 +14,5 @@ export class ContacteComponent {
   constructor(private http: HttpClient) {
   }
 
-  escriure() {
-    console.log("XD");
-    this.http.post<any>("http://localhost:3080/api/escriure", {name: this.name, mail: this.mail, missatge: this.missatge});
-  }
+
 }

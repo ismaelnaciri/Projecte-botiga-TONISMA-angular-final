@@ -14,9 +14,11 @@
   <p>Pagina web dedicada al món dels videojocs</p>
   </div>
 
-  <div class="username_intitle">
-  <p id="userName">Usuari: {{name}}</p>
-  <p id="wallet" (click)="update()">Wallet: {{wallet}}</p>
-  </div>
+  <div class="username_intitle" >
+    <a routerLink="/perfil" routerLinkActive="active" ><p id="perfil">Perfil</p></a>
 
+    <div *ngIf="this.s.autenticat" id="userName">{{this.s.usuariAutenticat}}</div>
+
+    <p id="wallet" (click)="update()">Wallet: {{wallet}}</p>
+  </div>
 </header>

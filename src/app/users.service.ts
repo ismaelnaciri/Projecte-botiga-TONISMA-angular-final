@@ -5,15 +5,14 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class UsersService implements OnInit {
-  public autenticat: boolean | undefined;
-  public posAutenticat = 0;
+  public autenticat: boolean | false;
+  public usuariAutenticat: any;
   public emailAutenticat: any;
-  public arrClients: any[] = [];
-  public usuari: any;
   public walletName: any;
 
 
   constructor(private http:HttpClient) {
+    this.autenticat=false
     // this.http.get<any>('http://localhost:3080/api/firebase').subscribe((document) =>{
     //   this.arrClients = document;
     // });
@@ -22,5 +21,6 @@ export class UsersService implements OnInit {
   ngOnInit(): void {
 
   }
+
 }
 

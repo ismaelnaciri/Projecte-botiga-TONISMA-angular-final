@@ -8,12 +8,12 @@ import {UsersService} from "../users.service";
 })
 export class TitolLogoComponent implements OnInit{
 
+  iniciatSessio=this.s.autenticat
   name: any;
   wallet = "";
 
-  constructor(private s: UsersService) {
-    if (this.s.autenticat == true)
-      this.name = this.s.arrClients[this.s.posAutenticat];
+  constructor(public s: UsersService) {
+
 
   }
 
@@ -25,4 +25,6 @@ export class TitolLogoComponent implements OnInit{
   update() {
     this.wallet = this.s.walletName;
   }
+
+
 }

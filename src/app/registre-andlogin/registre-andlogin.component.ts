@@ -4,8 +4,6 @@ import {Router} from "@angular/router";
 import {UsersService} from "../users.service";
 
 
-
-
 declare global {
   interface Window {
     ethereum: any;
@@ -33,6 +31,7 @@ export class RegistreANDLoginComponent  {
 
   login: any[] =[]
 
+  name:any;
   email:any;
   password:any;
   correuTrobat: any;
@@ -40,10 +39,8 @@ export class RegistreANDLoginComponent  {
   //Contacte
   missatge: any;
 */
-  constructor(private http:HttpClient, public router:Router, private serveiUsuari: UsersService,/*public firebaseAuth: AngularFireAuth*/) {
-   /* if(this.autenticat){
-      this.nomAutenticat = this.serveiUsuari.arrClients.clients[this.serveiUsuari.posAutenticat].Nom;
-    }*/
+  constructor(private http:HttpClient, public router:Router, private serveiUsuari: UsersService) {
+
     this.http.get<any>("http://localhost:3080/signin").subscribe()
 
   }
@@ -54,19 +51,72 @@ export class RegistreANDLoginComponent  {
       contrasenya:this.contrasenya,
       correu:this.correu
     }]
-    this.http.post("http://localhost:3080/signin",{json:this.registre}).subscribe();
+    this.http.post("http://localhost:3080/signin",{json:this.registre}).subscribe(
+      (response)=>{
+        if(response == true){
+          window.alert("S'han inserit les dades a la base de dades")
+        }else{
+          window.alert("Ha hagut un error en l'inici de sessio")
+        }
+      }
+    );
   }
+  /*registrar(){
+    this.registre=[{
+      nom:this.nom,
+      contrasenya:this.contrasenya,
+      correu:this.correu
+    }]
+    this.http.post("http://localhost:3080/signin",{json:this.registre}).subscribe(
+      (response)=>{
+        if(response == true){
+          window.alert("S'han inserit les dades a la base de dades")
+        }else{
+          window.alert("Ha hagut un error en el seu registre")
+        }
+      }
+    );
+  }
+
+  iniciar() {
+    this.login= [{
+      email: this.email,
+      password: this.password
+    }];
+
+    this.http.post<any>('http://localhost:3080/login', {json:this.login}).subscribe(
+      (response) => {
+        if(response==true){
+          window.alert("Inici de sessió exitós")
+        }else {
+          window.alert("Inici de sessió incorrecte")
+        }
+      },
+      (error) => {
+
+        console.error(error);
+      }
+    );
+  }*/
 
   iniciar() {
     const formData = {
       email: this.email,
-      password: this.password
+      password: this.password,
     };
 
     this.http.post<any>('http://localhost:3080/login', formData).subscribe(
       (response) => {
+        if(response==false){
+          window.alert("Inici de sessió incorrecte")
+        }else{
+          window.alert("Inici de sessió exitós")
+          this.serveiUsuari.usuariAutenticat=response.nomPersona
+          this.mostrarUsuari();
 
-        console.log(response);
+        this.router.navigate(["/perfil"]);
+
+        }
       },
       (error) => {
 
@@ -75,6 +125,10 @@ export class RegistreANDLoginComponent  {
     );
   }
 
+  mostrarUsuari(){
+    this.serveiUsuari.autenticat=true
+    this.serveiUsuari.emailAutenticat=this.email
+  }
 
   // openMetaMaskWallet() {
   //   //@ts-ignore

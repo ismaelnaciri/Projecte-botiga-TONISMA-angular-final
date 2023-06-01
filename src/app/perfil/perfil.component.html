@@ -1,0 +1,9 @@
+<div *ngIf="!autenticat" class="no-iniciat">
+ <h1>ENCARA NO S'HA INICIAT SESSIÓ</h1>
+  <button routerLink="/signin" routerLinkActive="active">VES A INICIAR SESSIÓ</button>
+</div>
+
+<div *ngIf="autenticat" class="iniciat">
+  <h2>Nom: {{nom}}</h2>
+  <h4>Correu: {{email}}</h4>
+</div>
