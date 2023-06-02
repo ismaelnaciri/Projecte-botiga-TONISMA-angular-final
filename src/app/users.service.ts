@@ -23,7 +23,7 @@ export class UsersService implements OnInit {
     const accio = action
     const fechaHora = new Date().toLocaleString()
 
-    this.http.post('http://localhost:3080/guardar-accion', { usuari, accio,fechaHora })
+    this.http.post('http://localhost:3080/guardar-accio', { usuari, accio,fechaHora })
       .subscribe((response) => {
         console.log(response);
       });
