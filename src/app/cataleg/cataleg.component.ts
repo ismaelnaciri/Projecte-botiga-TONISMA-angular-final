@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ServeisService} from "../serveis.service";
+import {UsersService} from "../users.service";
 import {HttpClient} from "@angular/common/http";
 
 //import { Product, products } from "../Productes";
@@ -11,8 +12,9 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CatalegComponent implements OnInit {
   products: any;
+  accioAddCistella: string|undefined
+  constructor(private s: ServeisService, private http: HttpClient, private u:UsersService) {
 
-  constructor(private s: ServeisService, private http: HttpClient) {
     this.listProductes();
   }
 
@@ -30,6 +32,12 @@ export class CatalegComponent implements OnInit {
     product.quantity = 1;
     this.s.addToCart(product);
     window.alert((`${product.nom} s'ha afegit a la cistella.`));
+
+    if (this.u.autenticat){
+      this.accioAddCistella=`ha afegit ${product.nom} a la cistella`
+      this.u.guardarAccio(this.accioAddCistella)
+    }
+
   }
 
   filterShown (product: any) {

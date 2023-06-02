@@ -34,14 +34,13 @@ export class RegistreANDLoginComponent  {
   name:any;
   email:any;
   password:any;
-  correuTrobat: any;
 
-/*
-  //Contacte
-  missatge: any;
-*/
+  //log
+
+  accioISessio= 'ha iniciat sessió'
+
+
   constructor(private http:HttpClient, public router:Router, private serveiUsuari: UsersService) {
-
 
   }
 
@@ -78,6 +77,7 @@ export class RegistreANDLoginComponent  {
           window.alert("Inici de sessió exitós")
           this.serveiUsuari.usuariAutenticat=response.nomPersona
           this.mostrarUsuari();
+          this.serveiUsuari.guardarAccio(this.accioISessio)
 
         this.router.navigate(["/perfil"]);
 
@@ -146,5 +146,7 @@ export class RegistreANDLoginComponent  {
       })
     })
   }
+
+
 }
 

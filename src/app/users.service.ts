@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class UsersService implements OnInit {
   public autenticat: boolean;
-  public usuariAutenticat: any;
+  public usuariAutenticat= "dummy";
   public emailAutenticat: any;
   public walletName: any;
 
@@ -17,6 +17,16 @@ export class UsersService implements OnInit {
 
   ngOnInit(): void {
 
+  }
+  guardarAccio(action: string) {
+    const usuari = this.usuariAutenticat;
+    const accio = action
+    const fechaHora = new Date().toLocaleString()
+
+    this.http.post('http://localhost:3080/guardar-accion', { usuari, accio,fechaHora })
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UsersService } from "../users.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-contacte',
@@ -11,21 +13,32 @@ export class ContacteComponent {
   mail: any;
   missatge: any;
 
+  accioMissatge= 'ha enviat un missatge'
 
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient, private u: UsersService,public router:Router) {}
 
   enviarMensaje() {
-    const missatge = {
-      name: this.name,
-      mail: this.mail,
-      missatge: this.missatge
-    };
+    if (this.u.autenticat){
+      const missatge = {
+        name: this.name,
+        mail: this.mail,
+        missatge: this.missatge
+      };
 
-    this.http.post('http://localhost:3080/api/contacte', missatge).subscribe(
-      (response) => {
-        console.log('S\'ha enviat el teu missatge:', response);
-        window.alert("S'ha enviat el teu missatge")
-      }
-    );
+      this.http.post('http://localhost:3080/api/contacte', missatge).subscribe(
+        (response) => {
+          console.log('S\'ha enviat el teu missatge:', response);
+          window.alert("S'ha enviat el teu missatge")
+        }
+      );
+
+      this.u.guardarAccio(this.accioMissatge)
+    }else{
+      window.alert("Inicia sessio per enviar un missatge")
+      this.router.navigate(["/signin"]);
+    }
+
+
   }
 }

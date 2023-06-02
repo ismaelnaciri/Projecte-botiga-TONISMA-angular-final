@@ -15,6 +15,8 @@ export class CistellaComponent implements OnInit{
   canviMoneda = 0;
   preuActual: any;
 
+  accioCompra: string|undefined
+
   constructor(private s: ServeisService, private http:HttpClient, private serv: UsersService) {
 
   }
@@ -122,9 +124,17 @@ export class CistellaComponent implements OnInit{
   }
 
   async compraProducte(){
+
+    if (this.serv.autenticat){
+      this.accioCompra=`ha realitzat una compra per un valor de ${this.canviMoneda}${this.monedaSimbol}`
+      this.serv.guardarAccio(this.accioCompra)
+    }
+
     this.CoinUpdate(this.monedaSimbol);
     await this.compraBNB()
     this.PriceUpdate(this.canviMoneda)
+
+
 
     this.http.post('http://localhost:3080/compres', { json: this.items })
       .subscribe({
@@ -132,6 +142,7 @@ export class CistellaComponent implements OnInit{
           console.error("There was an error", error);
         }
       })
+
     let params = [
       {
         // from: this.serv.walletName,

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-
+import {UsersService} from "../users.service";
 
 @Component({
   selector: 'app-f2p',
@@ -9,11 +9,10 @@ import { HttpClient } from "@angular/common/http";
 })
 export class F2pComponent implements OnInit{
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private u:UsersService) {
 
   }
   numDex: number | undefined;
-
 
 
   selectPokemon(){
@@ -47,6 +46,7 @@ export class F2pComponent implements OnInit{
       document.getElementById('nom').innerHTML=value.name
       // @ts-ignore
       document.getElementById('sprite').src=value.sprites.front_default
+
 
     })
   }
